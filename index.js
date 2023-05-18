@@ -4,16 +4,10 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-const product = require("./api/product");
-const getimages = require("./api/getimages");
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json({ extended: false }));
 
-
-const mustache = require('mustache');
-
-const indexMusache = fs.readFileSync('path/to/index.html', 'utf8');
-const imagesMusache = fs.readFileSync('path/to/image-urls.html', 'utf8');
 app.get('/image-urls', (req, res) => {
 
     console.log(req);
@@ -38,26 +32,22 @@ app.post('/submit-text', (req, res) => {
     //     'https://lux.mrcong.com/images/2023/04/26/DJAWA-Photo-Son-Ye-Eun-Early-Spring-Walk-in-March-Vol.2-S.Ver-MrCong.com-002.webp',
     //     'https://lux.mrcong.com/images/2023/04/26/DJAWA-Photo-Son-Ye-Eun-Early-Spring-Walk-in-March-Vol.2-S.Ver-MrCong.com-999.webp',
     // ]
-    const rendered = mustache.render(imagesMusache, { urls });
-    res.send(rendered);
-    //res.render('image-urls', { urls })
+    //const rendered = mustache.render(imagesMusache, { urls });
+    //res.send(rendered);
+    res.render('image-urls', { urls })
     //res.send(`You submitted: ${text}`)
 })
 
 app.get('/home', (req, res) => {
-    const rendered = mustache.render(indexMusache);
-    res.send(rendered);
+    //const rendered = mustache.render(indexMusache);
+    //res.send(rendered);
 
     //res.send("asd");
-    //res.render('index')
+    res.render('index')
     //res.sendFile(__dirname + '/index.html')
 })
 
 
-app.use(express.json({ extended: false }));
-
-app.use("/api/product", product);
-app.use("/api/getimages", getimages);
 
 app.listen(8080, () => {
     console.log('Server listening on port 8080')
