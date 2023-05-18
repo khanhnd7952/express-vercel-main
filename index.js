@@ -34,7 +34,7 @@ app.post('/submit-text', (req, res) => {
     //res.send(`You submitted: ${text}`)
 })
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
