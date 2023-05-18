@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<!-- <head>
+    <title>Image URLs</title>
+</head>
+
+<body>
+    <h1>Image URLs:</h1>
+    <ul>
+        <% for (let url of urls) { %>
+            <li><img src="<%= url %>"></li>
+            <% } %>
+    </ul>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web App</title>
+</head>
+<body>
+    <h1>Items:</h1>
+    <ul>
+        {{#urls}}
+        <li><img src={{.}}></li>
+        {{/urls}}
+    </ul>
+</body>
+</html>
