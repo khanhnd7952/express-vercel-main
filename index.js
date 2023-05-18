@@ -35,7 +35,8 @@ app.post('/submit-text', (req, res) => {
 })
 
 app.get('/home', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.send("asd");
+    //res.sendFile(__dirname + '/index.html')
 })
 
 
