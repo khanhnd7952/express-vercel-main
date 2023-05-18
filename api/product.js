@@ -8,7 +8,7 @@ const router = express.Router();
  */
 router.get("/", async (req, res) => {
   try {
-    res.send("asd");
+    res.send("asd5-50");
   
   } catch (error) {
     console.error(error);
