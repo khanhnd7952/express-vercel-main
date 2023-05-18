@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
+const product = require("./api/product");
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -36,6 +37,11 @@ app.post('/submit-text', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
+
+
+app.use(express.json({ extended: false }));
+
+app.use("/api/product", product);
 
 
 app.listen(8080, () => {
