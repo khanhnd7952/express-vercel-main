@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const router = express.Router();
 
-const product = require("./api/product");
-const getimages = require("./api/getimages");
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -35,20 +34,22 @@ app.post('/submit-text', (req, res) => {
     //res.send(`You submitted: ${text}`)
 })
 
-app.get('/home', (req, res) => {
+router.get('/', (req, res) => {
     //res.send("asd");
     res.sendFile(__dirname + '/index.html')
 })
 
-
-app.use(express.json({ extended: false }));
-
-app.use("/api/product", product);
-app.use("/api/getimages", getimages);
-
-app.listen(8080, () => {
-    console.log('Server listening on port 8080')
-})
+// router.get("/", async (req, res) => {
+//     try {
+//       res.json({
+//         status: 200,
+//         message: "Get data has successfully",
+//       });
+//     } catch (error) {
+//       console.error(error);
+//       return res.status(500).send("Server error");
+//     }
+//   });
 
 function getUrl(rawUrl, index) {
     let i = index;
@@ -62,3 +63,6 @@ function getUrl(rawUrl, index) {
     return url;
 
 }
+
+
+module.exports = router;
